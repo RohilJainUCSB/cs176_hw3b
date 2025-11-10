@@ -1,0 +1,6 @@
+The client creates a UDP socket, sets a one second timeout for receiving responses, and then sends ten pings to the server, each containing a sequence number and timestamp.
+Then, for every message sent, the client waits up to one second for a reply. If a reply is received, it calculates the RTT using the difference betwee the send and receive
+timestamps and prints the result. If no reply arrives within the timeout, it prints that the ping timed out for that sequence number ping. Throughout the process, the client
+tracks how many packets were sent and received, calculates packet loss, and records the minimum, average, and maximum RTT. At the end, it prints a summary showing the number
+of packets transmitted, how many were received, the percentage lost, and the RTT statistics using these calculated values. This is also made possible by using a socket option
+and essentially telling the socket to give up on the current packet if the one second timeout occurs so that it can move on instead of waiting forever for it.

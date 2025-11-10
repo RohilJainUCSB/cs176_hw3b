@@ -81,14 +81,15 @@ int main(int argc, char * argv[])
     double loss = 100.0 * (sent - received) / sent; //Loss percentage
     double avg = (received)? (sum / received) : 0;
     printf("--- %s ping statistics ---\n", server_ip);
-    printf("%d packets transmitted, %d received, %.0f%% packet loss\n", sent, received, loss);
-    if (received) //A packet at least was received
+    printf("%d packets transmitted, %d received, %.0f%% packet loss", sent, received, loss);
+
+    if (received) //If something was received, then we can print the needed stats
     {
         printf("rtt min/avg/max = %.3f %.3f %.3f ms\n", min, avg, max);
     }
-    else //If nothing was received, we should do a default report of 0s
+    else //If nothing was received, print the 0s
     {
-        printf("rtt min/avg/max = 0.000 0.000 0.000 ms\n");
+        printf("\n");
     }
 
     close(client_socket_fd);

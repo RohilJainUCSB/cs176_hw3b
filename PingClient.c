@@ -83,9 +83,9 @@ int main(int argc, char * argv[])
     printf("--- %s ping statistics ---\n", server_ip);
     printf("%d packets transmitted, %d received, %.0f%% packet loss", sent, received, loss);
 
-    if (received) //If something was received, then we can print the needed stats
+    if (received > 0) //If something was received, then we can print the needed stats
     {
-        printf("rtt min/avg/max = %.3f %.3f %.3f ms\n", min, avg, max);
+        printf(" rtt min/avg/max = %.3f %.3f %.3f ms\n", min, avg, max);
     }
     else //If nothing was received, print the 0s
     {
